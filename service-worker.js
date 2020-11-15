@@ -2,11 +2,12 @@ var CACHE_NAME = "my-site-cache-v1"
 var urlsToCache = [
   "/",
   "/index.html",
+  "/index.css",
   "/projects/fun-string/fun-string.html",
-  "/projects/test/pwa-test.html",
-  "/projects/test/icons/ic_create_new_folder_black_48dp.png",
-  "/projects/test/icons/ic_file_upload_black_48dp.png",
-  "/projects/test/icons/ic_folder_black_48dp.png",
+  // "/projects/pwa-base/pwa-test.html",
+  // "/projects/pwa-base/icons/ic_create_new_folder_black_48dp.png",
+  // "/projects/pwa-base/icons/ic_file_upload_black_48dp.png",
+  // "/projects/pwa-base/icons/ic_folder_black_48dp.png",
   //   "",
   //   '/styles/main.css',
   //   '/script/main.js'

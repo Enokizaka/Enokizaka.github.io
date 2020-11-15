@@ -32,6 +32,16 @@
     <meta name="twitter:site" content="@enokizaka" /> -->
     <!-- End Jekyll SEO tag -->
 
+    <!-- Begin PWA -->
+    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4" />
+    <meta name="theme-color" content="#FFE1C4" />
+    <link rel="manifest" href="https://enokizaka.github.io/projects/pwa-base/manifest/manifest.json" />
+    <link rel="apple-touch-icon" href="https://enokizaka.github.io/projects/pwa-base/manifest/icon-192x192.png">
+    <link rel="icon" 
+      type="image/png" 
+      href="./icons/favicon.ico">
+    <!-- End PWA -->
+
   </head>
   <body>
     <h2>My Projects</h2>
@@ -41,4 +51,9 @@
       <li>...</li>
     </ul>
   </body>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./service-worker.js")
+    }
+  </script>
 </html>
