@@ -2,6 +2,7 @@ var CACHE_NAME = "my-site-cache-v1"
 var urlsToCache = [
   "/",
   "/index.html",
+  "/projects/fun-string/fun-string.html",
   "/projects/test/pwa-test.html",
   "/projects/test/icons/ic_create_new_folder_black_48dp.png",
   "/projects/test/icons/ic_file_upload_black_48dp.png",
