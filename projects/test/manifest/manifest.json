@@ -7,12 +7,17 @@
   "start_url": "/",
   "app_name": "EnokiPWA",
   "short_name": "enokipwa",
-  "purpose": "any maskable",
   "icons": [
     {
       "src": "https://enokizaka.github.io/projects/test/manifest/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
+    },
+    {
+      "src": "https://enokizaka.github.io/projects/test/manifest/maskable_icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "https://enokizaka.github.io/projects/test/manifest/icon-256x256.png",
