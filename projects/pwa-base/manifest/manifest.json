@@ -1,12 +1,12 @@
 {
-  "name": "EnokiPWA",
+  "name": "EnokiProjects",
   "theme_color": "#f69435",
   "background_color": "#f69435",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "app_name": "EnokiPWA",
-  "short_name": "enokipwa",
+  "app_name": "EnokiProjects",
+  "short_name": "EnokiApps",
   "icons": [
     {
       "src": "https://enokizaka.github.io/projects/pwa-base/manifest/icon-192x192.png",
