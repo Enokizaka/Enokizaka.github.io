@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SW</title>
+    <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4" />
+    <meta name="theme-color" content="#FFE1C4" />
+    <link rel="manifest" href="./manifest/manifest.json" />
+    <link rel="apple-touch-icon" href="./manifest/icon-192x192.png">
+    <link rel="icon" 
+      type="image/png" 
+      href="./icons/favicon.ico">
+  </head>
+  <body>
+    <noscript>Your browser does not support JavaScript!</noscript>
+    <h3>Live Demo</h3>
+    <p>
+      The following demo illustrates the service worker's runtime caching by
+      loading images in response to clicking the button below.
+    </p>
+    <p>
+      The first time a given image is requested, the service worker will be load
+      it from the network, but each subsequent time, it will be retrieved from
+      the cache.
+    </p>
+    <label for="icons">Icons:</label>
+    <select id="icons">
+      <option value="icons/ic_create_new_folder_black_48dp.png">
+        New Folder
+      </option>
+      <option value="icons/ic_file_upload_black_48dp.png">File Upload</option>
+      <option value="icons/ic_folder_black_48dp.png">Closed Folder</option>
+      <option value="icons/ic_folder_open_black_48dp.png">Open Folder</option>
+      <option value="icons/ic_folder_shared_black_48dp.png">
+        Shared Folder
+      </option>
+    </select>
+    <button id="show">Show Icon</button>
+    <div id="container"></div>
+  </body>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+    }
+
+    document.querySelector("#show").addEventListener("click", () => {
+      const iconUrl = document.querySelector("select").selectedOptions[0].value
+      let imgElement = document.createElement("img")
+      imgElement.src = iconUrl
+      document.querySelector("#container").appendChild(imgElement)
+    })
+  </script>
+</html>
