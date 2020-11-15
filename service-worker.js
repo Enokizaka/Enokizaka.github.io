@@ -5,13 +5,6 @@ var urlsToCache = [
   "/index.css",
   "/third-party-items/google-roboto.css",
   "/projects/fun-string/fun-string.html",
-  // "/projects/pwa-base/pwa-test.html",
-  // "/projects/pwa-base/icons/ic_create_new_folder_black_48dp.png",
-  // "/projects/pwa-base/icons/ic_file_upload_black_48dp.png",
-  // "/projects/pwa-base/icons/ic_folder_black_48dp.png",
-  //   "",
-  //   '/styles/main.css',
-  //   '/script/main.js'
 ]
 
 self.addEventListener("install", function (event) {
