@@ -1,9 +1,9 @@
 var CACHE_NAME = "my-site-cache-v1"
 var urlsToCache = [
-  "/",
-  "icons/ic_create_new_folder_black_48dp.png",
-  "icons/ic_file_upload_black_48dp.png",
-  "icons/ic_folder_black_48dp.png",
+  "/projects/test/pwa-test.html",
+  "/projects/test/icons/ic_create_new_folder_black_48dp.png",
+  "/projects/test/icons/ic_file_upload_black_48dp.png",
+  "/projects/test/icons/ic_folder_black_48dp.png",
   //   "",
   //   '/styles/main.css',
   //   '/script/main.js'
