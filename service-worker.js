@@ -9,7 +9,7 @@ var urlsToCache = [
 ]
 
 self.addEventListener("install", function (event) {
-  console.log("install step")
+  console.log("install step v2")
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
@@ -24,15 +24,20 @@ self.addEventListener("install", function (event) {
 self.addEventListener("activate", (evt) => {
   console.log("activate step")
   evt.waitUntil(
-    caches.keys().then((keys) => {
-      console.log(`keys--> ${keys}`)
-      console.log(`CACHE_NAME--> ${CACHE_NAME}`)
-      return Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    })
+    caches
+      .keys()
+      .then((keys) => {
+        console.log(`keys--> ${keys}`)
+        console.log(`CACHE_NAME--> ${CACHE_NAME}`)
+        return Promise.all(
+          keys
+            .filter((key) => key !== CACHE_NAME)
+            .map((key) => caches.delete(key))
+        )
+      })
+      .then(() => {
+        console.log("V2 now ready to handle fetches!")
+      })
   )
 })
 
