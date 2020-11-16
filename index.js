@@ -23,6 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("appinstalled", (e) => {
   // Log install to analytics
   console.log("INSTALL: Success")
+  buttonInstall.style.display = "none"
 })
 
 function isInstalled() {
