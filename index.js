@@ -1,17 +1,20 @@
-window.addEventListener("DOMContentLoaded", () => {
-  const buttonInstall = document.querySelector(".install-button")
-  buttonInstall.style.display = "none"
-  let deferredPrompt
+let deferredPrompt
 
-  window.addEventListener("beforeinstallprompt", (e) => {
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault()
-    // Stash the event so it can be triggered later.
-    deferredPrompt = e
-    // Update UI notify the user they can install the PWA
-    buttonInstall.style.display = "block"
-    showInstallPromotion()
-  })
+window.addEventListener("beforeinstallprompt", (e) => {
+  console.log("before install prompt")
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault()
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e
+  // Update UI notify the user they can install the PWA
+  //   buttonInstall.style.display = "block"
+  showInstallPromotion()
+})
+
+window.addEventListener("DOMContentLoaded", () => {
+  console.log("dom content loaded")
+  const buttonInstall = document.querySelector(".install-button")
+  //   buttonInstall.style.display = "none"
 
   buttonInstall.addEventListener("click", (e) => {
     // Hide the app provided install promotion
