@@ -4,6 +4,6 @@ body {
 
 .install-button {
   position: absolute;
-  top: 1px;
-  left: 1px;
+  top: 8px;
+  right: 16px;
 }

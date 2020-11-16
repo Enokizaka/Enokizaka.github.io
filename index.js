@@ -1,8 +1,6 @@
 const buttonInstall = document.querySelector(".install-button")
 let deferredPrompt
 
-console.log('hello?')
-
 window.addEventListener("beforeinstallprompt", (e) => {
   // Prevent the mini-infobar from appearing on mobile
   e.preventDefault()
