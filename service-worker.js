@@ -22,8 +22,11 @@ self.addEventListener("install", function (event) {
 // activate event
 // When we change the name of our cache, we could have multiple caches stored, and that could create problems. To avoid that, we need to delete the old one. In this function we check the key (our cache name), if the same is different from the previous, we delete the previous. Doing that, we always have only the last cache.
 self.addEventListener("activate", (evt) => {
+  console.log("activate step")
   evt.waitUntil(
     caches.keys().then((keys) => {
+      console.log(`keys--> ${keys}`)
+      console.log(`CACHE_NAME--> ${CACHE_NAME}`)
       return Promise.all(
         keys
           .filter((key) => key !== CACHE_NAME)
@@ -34,22 +37,19 @@ self.addEventListener("activate", (evt) => {
 })
 
 self.addEventListener("fetch", function (event) {
-  console.log("fetch step")
-  // console.log(event)
-  //   console.log(event.request.slice(-3))
-  //   console.log(event.request.slice(-3)==='png')
+  // console.log("fetch step")
   event.respondWith(
     caches.match(event.request).then(function (response) {
       // Cache hit - return response
       if (response) {
-        console.log("fetch step response chached value")
+        console.log("C fetch step response chached value")
         return response
       }
 
       return fetch(event.request).then(function (response) {
         // Check if we received a valid response
         if (!response || response.status !== 200 || response.type !== "basic") {
-          console.log("fetch step response fetched value")
+          console.log("F fetch step response fetched value")
           return response
         }
 
