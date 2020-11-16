@@ -37,7 +37,20 @@ window.addEventListener("appinstalled", (evt) => {
   console.log("INSTALL: Success")
 })
 
-const relatedApps = await navigator.getInstalledRelatedApps()
-relatedApps.forEach((app) => {
-  console.log(app.id, app.platform, app.url)
-})
+async function isInstalled() {
+  const relatedApps = await navigator.getInstalledRelatedApps()
+  relatedApps.forEach((app) => {
+    console.log(app.id, app.platform, app.url)
+  })
+
+  // For iOS
+  if (window.navigator.standalone) return true
+
+  // For Android
+  if (window.matchMedia("(display-mode: standalone)").matches) return true
+
+  // If neither is true, it's not installed
+  return false
+}
+
+isInstalled()
