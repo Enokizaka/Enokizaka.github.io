@@ -25,13 +25,15 @@ window.addEventListener("appinstalled", (e) => {
   console.log("INSTALL: Success")
 })
 
-// function isInstalled() {
-//   // For iOS
-//   if (window.navigator.standalone) return true
+function isInstalled() {
+  // For iOS
+  if (window.navigator.standalone) return true
 
-//   // For Android
-//   if (window.matchMedia("(display-mode: standalone)").matches) return true
+  // For Android
+  if (window.matchMedia("(display-mode: standalone)").matches) return true
 
-//   // If neither is true, it's not installed
-//   return false
-// }
+  // If neither is true, it's not installed
+  return false
+}
+
+console.log(`is installed? ${isInstalled()}`)
