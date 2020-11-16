@@ -28,6 +28,8 @@ window.addEventListener("appinstalled", (e) => {
 })
 
 function isInstalled() {
+    console.log(`window.navigator.standalone--> ${window.navigator.standalone}`)
+    console.log(`window.matchMedia("(display-mode: standalone)").matches--> ${window.matchMedia("(display-mode: standalone)").matches}`)
   // For iOS
   if (window.navigator.standalone) return true
 

@@ -1,4 +1,4 @@
-var CACHE_NAME = "my-site-cache-v1-2"
+var CACHE_NAME = "enokiprojects-1.3.0"
 var urlsToCache = [
   "/",
   "/index.html",
@@ -9,7 +9,7 @@ var urlsToCache = [
 ]
 
 self.addEventListener("install", function (event) {
-  console.log("install step v2")
+  console.log("install step v3")
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
@@ -36,7 +36,7 @@ self.addEventListener("activate", (evt) => {
         )
       })
       .then(() => {
-        console.log("V2 now ready to handle fetches!")
+        console.log("V3 now ready to handle fetches!")
       })
   )
 })
