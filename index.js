@@ -8,7 +8,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
   deferredPrompt = e
   // Update UI notify the user they can install the PWA
   //   buttonInstall.style.display = "block"
-//   showInstallPromotion()
+  //   showInstallPromotion()
 })
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -30,4 +30,14 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     })
   })
+})
+
+window.addEventListener("appinstalled", (evt) => {
+  // Log install to analytics
+  console.log("INSTALL: Success")
+})
+
+const relatedApps = await navigator.getInstalledRelatedApps()
+relatedApps.forEach((app) => {
+  console.log(app.id, app.platform, app.url)
 })
