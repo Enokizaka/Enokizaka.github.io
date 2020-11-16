@@ -3,6 +3,7 @@ var urlsToCache = [
   "/",
   "/index.html",
   "/index.css",
+  "/index.js",
   "/third-party-items/google-roboto.css",
   "/projects/fun-string/fun-string.html",
 ]
