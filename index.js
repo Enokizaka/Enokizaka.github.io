@@ -1,7 +1,8 @@
+let buttonInstall
 window.addEventListener("DOMContentLoaded", () => {
 //   console.log("dom content loaded")
   let deferredPrompt
-  let buttonInstall = document.querySelector(".install-button")
+  buttonInstall = document.querySelector(".install-button")
   buttonInstall.style.display = "none"
 
   window.addEventListener("beforeinstallprompt", (e) => {
