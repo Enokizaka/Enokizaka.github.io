@@ -1,13 +1,13 @@
 let buttonInstall
+// let pageContentWrapper
 window.addEventListener("DOMContentLoaded", () => {
-  //   console.log("dom content loaded")
+  // SERVICE WORLER
   let deferredPrompt
   buttonInstall = document.querySelector(".install-button")
   buttonInstall.style.display = "none"
 
   window.addEventListener("beforeinstallprompt", (e) => {
     // CAUTION! this eventListener will be fired some times
-    // console.log("before install prompt")
     buttonInstall.style.display = "block"
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault()
@@ -23,10 +23,28 @@ window.addEventListener("DOMContentLoaded", () => {
         console.log("User accepted the A2HS prompt")
         buttonInstall.style.display = "none"
       } else {
-        // console.log("User dismissed the A2HS prompt")
       }
       deferredPrompt = null
     })
+  })
+
+  // PAGE MANIPULATION
+  const sideBoard = document.querySelector('#side-board')
+  const sideAbout = document.querySelector('#side-about')
+  const boardPageContainer = document.querySelector('#board')
+  const aboutPageContainer = document.querySelector('#about')
+  let appearingContainerEle = boardPageContainer
+
+  sideBoard.addEventListener('click',()=>{
+    appearingContainerEle.classList.add('none')
+    boardPageContainer.classList.remove('none')
+    appearingContainerEle = boardPageContainer
+  })
+  
+  sideAbout.addEventListener('click',()=>{
+    appearingContainerEle.classList.add('none')
+    aboutPageContainer.classList.remove('none')
+    appearingContainerEle = aboutPageContainer
   })
 })
 

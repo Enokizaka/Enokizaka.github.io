@@ -7,12 +7,20 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ｅ</text></svg>"
     />
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" /> -->
+
+    <!-- Google Font CSS -->
     <link
-      href="https://enokizaka.github.io/third-party-items/google-roboto.css"
+      href="https://enokizaka.github.io/vendor/fonts/google-roboto.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./index.css" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://enokizaka.github.io/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="https://enokizaka.github.io/css/simple-sidebar.css" rel="stylesheet" />
+    <link href="./index.css" rel="stylesheet" />
+
     <script src="./index.js"></script>
 
     <!-- Begin Jekyll SEO tag v2.6.1 -->
@@ -36,25 +44,91 @@
     <!-- Begin PWA -->
     <meta name="apple-mobile-web-app-status-bar" content="#FFE1C4" />
     <meta name="theme-color" content="#FFE1C4" />
-    <link rel="manifest" href="https://enokizaka.github.io/projects/pwa-base/manifest/manifest.json" />
-    <link rel="apple-touch-icon" href="https://enokizaka.github.io/projects/pwa-base/manifest/icon-192x192.png">
+    <link
+      rel="manifest"
+      href="https://enokizaka.github.io/projects/pwa-base/manifest/manifest.json"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://enokizaka.github.io/projects/pwa-base/manifest/icon-192x192.png"
+    />
     <!-- End PWA -->
-
   </head>
   <body>
-    <h2>My Projects</h2>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Enoki Projects</div>
+        <div class="list-group list-group-flush">
+          <a class="list-group-item list-group-item-action bg-light" id="side-board"
+            >Board</a
+          >
+          <a class="list-group-item list-group-item-action bg-light" id="side-about"
+            >About(nothing)</a
+          >
+          <!-- <a href="#" class="list-group-item list-group-item-action bg-light"
+            >Overview</a
+          >
+          <a href="#" class="list-group-item list-group-item-action bg-light"
+            >Events</a
+          >
+          <a href="#" class="list-group-item list-group-item-action bg-light"
+            >Profile</a
+          >
+          <a href="#" class="list-group-item list-group-item-action bg-light"
+            >Status</a >-->
+        </div>
+      </div>
+      <!-- /#sidebar-wrapper -->
 
-    <button class="install-button">Install PWA</button>
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <button class="install-button">Install PWA</button>
 
-    <ul style="list-style-type: square">
-      <li><a href="./projects/fun-string/fun-string.html">fun-string</a></li>
-      <li><a href="./projects/tws-vanilla/tws-vanilla.html">tws-vanilla</a></li>
-      <li>...</li>
-    </ul>
+        <!-- BOARD PAGE -->
+        <div class="container-fluid" id="board">
+          <h1 class="mt-4">My Projects</h1>
+
+          <ul style="list-style-type: square">
+            <li>
+              <a href="./projects/fun-string/fun-string.html" target="_blank"
+                >fun-string</a
+              >
+            </li>
+            <li>
+              <a href="./projects/tws-vanilla/tws-vanilla.html" target="_blank"
+                >tws-vanilla</a
+              >
+            </li>
+            <li>...</li>
+          </ul>
+        </div>
+        <!-- /#BOARD PAGE -->
+
+        <!-- about page -->
+        <div class="container-fluid none" id="about">
+          <h1 class="mt-4">About</h1>
+          <ul style="list-style-type: square">
+            <li>Only static projects</li>
+            <li>But my favorite field is back-end</li>
+            <li>...</li>
+          </ul>
+        </div>
+        <!-- /#about page -->
+      </div>
+      <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Service Worler JavaScript -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("./service-worker.js")
+      }
+    </script>
   </body>
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./service-worker.js")
-    }
-  </script>
 </html>
