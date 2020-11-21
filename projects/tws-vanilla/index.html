@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TWS vanilla</title>
+    <link rel="stylesheet" href="projects/tws-vanilla/index.css" />
+    <script src="projects/tws-vanilla/index.js"></script>
+  </head>
+  <body>
+    <!-- <div
+      style={styles.container}
+      onClick={() => setter()}> -->
+    <div class="container">
+      <!-- <SorSContext.Provider
+          value={{
+            setIntervalId: setIntervalId,
+          }}> -->
+      <div class="inner-container">
+        <p class="welcome-message">Touch everywhere to start or stop.</p>
+        <p class="timer-message none big-text"></p>
+      </div>
+      <!-- <iframe src="./my-sounds/pi.mp3" class="pi"></iframe>
+      <iframe src="./my-sounds/pu.mp3" class="pu"></iframe>
+      <iframe src="./my-sounds/poon.mp3" class="poon"></iframe> -->
+      <audio class="pi" src="projects/tws-vanilla/my-sounds/pi.mp3"  />
+      <audio class="pu" src="projects/tws-vanilla/my-sounds/pu.mp3"  />
+      <audio class="poon" src="projects/tws-vanilla/my-sounds/poon.mp3"  />
+      <!-- {isStopping ? <Timer /> : <React.Fragment />} -->
+      <!-- </SorSContext.Provider> -->
+    </div>
+    <!-- </div> -->
+  </body>
+</html>
