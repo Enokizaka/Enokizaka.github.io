@@ -43,6 +43,37 @@ self.addEventListener("activate", (evt) => {
 
 self.addEventListener("fetch", function (event) {
   // console.log("fetch step")
+  // // Network-first
+  // if (request.headers.get('Accept').includes('text/html')) {
+  // event.respondWith(
+  //   fetch(event.request)
+  //     .then(function (response) {
+  //       // Check if we received a valid response
+  //       if (!response || response.status !== 200 || response.type !== "basic") {
+  //         throw "cannot fetch"
+  //       }
+
+  //       var responseToCache = response.clone()
+  //       caches.open(CACHE_NAME).then(function (cache) {
+  //         cache.put(event.request, responseToCache)
+  //       })
+
+  //       return response
+  //     })
+  //     .catch(function (error) {
+  //       caches.match(event.request).then(function (response) {
+  //         // Cache hit - return response
+  //         if (response) {
+  //           console.log("C fetch step response chached value")
+  //           return response
+  //         }
+  //         console.log('we cannot open chache and fetch')
+  //       })
+  //     })
+  // )
+  // }
+
+  // Offline-first
   event.respondWith(
     caches.match(event.request).then(function (response) {
       // Cache hit - return response
