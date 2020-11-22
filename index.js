@@ -32,11 +32,21 @@ window.addEventListener("DOMContentLoaded", () => {
   // Toggle button
   const toggleButton = document.querySelector("#my-toggle")
   const wrapperContainer = document.querySelector("#wrapper")
-  toggleButton.addEventListener("click", () => {
-    const isToggled = wrapperContainer.classList.value.includes("toggled")
-    console.log(isToggled)
-    const foo = isToggled ? "remove" : "add"
+  const isOpened = () => {
+    return !wrapperContainer.classList.value.includes("toggled")
+  }
+  const reverseToggle = () => {
+    const foo = isOpened() ? "add" : "remove"
     wrapperContainer.classList[foo]("toggled")
+  }
+  toggleButton.addEventListener("click", () => {
+    reverseToggle()
+  })
+
+  const containerFluid = document.querySelector(".container-fluid")
+  containerFluid.addEventListener("click", () => {
+    if (!isOpened()) return
+    reverseToggle()
   })
 
   // PAGE MANIPULATION
