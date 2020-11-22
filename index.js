@@ -32,40 +32,47 @@ window.addEventListener("DOMContentLoaded", () => {
   // Toggle button
   const toggleButton = document.querySelector("#my-toggle")
   const wrapperContainer = document.querySelector("#wrapper")
+  const pageContentWrapper = document.querySelector("#page-content-wrapper")
   const isOpened = () => {
-    return !wrapperContainer.classList.value.includes("toggled")
+    return wrapperContainer.classList.value.includes("toggled")
   }
   const reverseToggle = () => {
-    const foo = isOpened() ? "add" : "remove"
+    const foo = isOpened() ? "remove" : "add"
     wrapperContainer.classList[foo]("toggled")
   }
   toggleButton.addEventListener("click", () => {
+    console.log("toggle button")
     reverseToggle()
   })
 
-  const containerFluid = document.querySelector(".container-fluid")
-  containerFluid.addEventListener("click", () => {
-    if (!isOpened()) return
-    reverseToggle()
-  })
+  // // const containerFluid = document.querySelector(".container-fluid")
+  // pageContentWrapper.addEventListener("click", () => {
+  //   console.log('page content')
+  //   if (!isOpened()) return
+  //   reverseToggle()
+  // })
 
   // PAGE MANIPULATION
-  const sideBoardButton = document.querySelector("#side-board")
+  const sideBoardButton = document.querySelector("#side-home")
   const sideAboutButton = document.querySelector("#side-about")
   const boardPageContainer = document.querySelector("#board")
+  // const storedboardPageContainer = boardPageContainer.innerHTML
   const aboutPageContainer = document.querySelector("#about")
   let appearingContainerEle = boardPageContainer
 
-  sideBoardButton.addEventListener("click", () => {
-    appearingContainerEle.classList.add("none")
-    boardPageContainer.classList.remove("none")
-    appearingContainerEle = boardPageContainer
-  })
+  // sideBoardButton.addEventListener("click", () => {
+  //   appearingContainerEle.classList.add("none")
+  //   boardPageContainer.classList.remove("none")
+  //   // boardPageContainer.innerHTML = storedboardPageContainer
+  //   appearingContainerEle = boardPageContainer
+  //   reverseToggle()
+  // })
 
   sideAboutButton.addEventListener("click", () => {
     appearingContainerEle.classList.add("none")
     aboutPageContainer.classList.remove("none")
     appearingContainerEle = aboutPageContainer
+    reverseToggle()
   })
 
   // Project links in board
