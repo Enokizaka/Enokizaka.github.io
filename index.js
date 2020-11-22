@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const isToggled = toggleButton.classList.value.includes("toggled")
     console.log(isToggled)
     const foo = isToggled ? "remove" : "add"
-    wrapperContainer.classList[foo] = "toggled"
+    wrapperContainer.classList[foo]("toggled")
   })
 
   // PAGE MANIPULATION
