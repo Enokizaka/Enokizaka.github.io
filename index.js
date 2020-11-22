@@ -29,6 +29,16 @@ window.addEventListener("DOMContentLoaded", () => {
     })
   })
 
+  // Toggle button
+  const toggleButton = document.querySelector("#my-toggle")
+  const wrapperContainer = document.querySelector("#wrapper")
+  toggleButton.addEventListener("click", () => {
+    const isToggled = toggleButton.classList.value.includes("toggled")
+    console.log(isToggled)
+    const foo = isToggled ? "remove" : "add"
+    wrapperContainer.classList[foo] = "toggled"
+  })
+
   // PAGE MANIPULATION
   const sideBoardButton = document.querySelector("#side-board")
   const sideAboutButton = document.querySelector("#side-about")
