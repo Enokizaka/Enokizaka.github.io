@@ -1,3 +1,4 @@
+const DIR = ""
 let buttonInstall
 // let pageContentWrapper
 window.addEventListener("DOMContentLoaded", () => {
@@ -29,23 +30,47 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   // PAGE MANIPULATION
-  const sideBoard = document.querySelector('#side-board')
-  const sideAbout = document.querySelector('#side-about')
-  const boardPageContainer = document.querySelector('#board')
-  const aboutPageContainer = document.querySelector('#about')
+  const sideBoardButton = document.querySelector("#side-board")
+  const sideAboutButton = document.querySelector("#side-about")
+  const boardPageContainer = document.querySelector("#board")
+  const aboutPageContainer = document.querySelector("#about")
   let appearingContainerEle = boardPageContainer
 
-  sideBoard.addEventListener('click',()=>{
-    appearingContainerEle.classList.add('none')
-    boardPageContainer.classList.remove('none')
+  sideBoardButton.addEventListener("click", () => {
+    appearingContainerEle.classList.add("none")
+    boardPageContainer.classList.remove("none")
     appearingContainerEle = boardPageContainer
   })
-  
-  sideAbout.addEventListener('click',()=>{
-    appearingContainerEle.classList.add('none')
-    aboutPageContainer.classList.remove('none')
+
+  sideAboutButton.addEventListener("click", () => {
+    appearingContainerEle.classList.add("none")
+    aboutPageContainer.classList.remove("none")
     appearingContainerEle = aboutPageContainer
   })
+
+  // Project links in board
+  const aEleArr = []
+  aEleArr.push(document.querySelector("#fun-string-a"))
+  aEleArr.push(document.querySelector("#tws-vanilla-a"))
+
+  aEleArr.forEach((aEle) => {
+    aEle.addEventListener("click", (e) => {
+      e.preventDefault()
+      const url = DIR + aEle.href
+      console.log(url)
+      createHTMLObjAndSet(url)
+    })
+  })
+
+  function createHTMLObjAndSet(url) {
+    const obj = document.createElement("object")
+    obj.type = "text/html"
+    obj.data = url
+    obj.width = "800px"
+    obj.height = "800px"
+    boardPageContainer.innerHTML = obj.outerHTML
+    return
+  }
 })
 
 window.addEventListener("appinstalled", (e) => {

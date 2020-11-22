@@ -11,3 +11,8 @@ body {
 .none {
   display: none;
 }
+
+object {
+  overflow: auto;
+  border: 5px;
+}
