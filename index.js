@@ -33,7 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.querySelector("#my-toggle")
   const wrapperContainer = document.querySelector("#wrapper")
   toggleButton.addEventListener("click", () => {
-    const isToggled = toggleButton.classList.value.includes("toggled")
+    const isToggled = wrapperContainer.classList.value.includes("toggled")
     console.log(isToggled)
     const foo = isToggled ? "remove" : "add"
     wrapperContainer.classList[foo]("toggled")
