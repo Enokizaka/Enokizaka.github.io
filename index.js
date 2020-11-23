@@ -7,10 +7,10 @@ window.addEventListener("DOMContentLoaded", () => {
   buttonInstall = document.querySelector("#install-button")
   console.log(`DOMContentLoaded button none`)
   buttonInstall.classList.add("none")
-  
+
   window.addEventListener("beforeinstallprompt", (e) => {
     // CAUTION! this eventListener will be fired some times
-    console.log('beforeinstallprompt')
+    console.log("beforeinstallprompt")
     buttonInstall.classList.remove("none")
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault()
@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted the A2HS prompt")
         console.log(`buttonlick and accepted -> button none`)
-        buttonInstall.classList.add("none")
+        buttonInstall.classList.add("none").classList.add("none")
       } else {
       }
       deferredPrompt = null
@@ -35,14 +35,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Toggle button
   const toggleButton = document.querySelector("#my-toggle")
+  const topRightButton = document.querySelector("#top-right-button")
   const wrapperContainer = document.querySelector("#wrapper")
   const pageContentWrapper = document.querySelector("#page-content-wrapper")
+  if(window.innerWidth > 767) toggleButton
   const isOpened = () => {
     return wrapperContainer.classList.value.includes("toggled")
+    // return document.querySelector("#wrapper").classList.value.includes("toggled")
   }
   const reverseToggle = () => {
     const foo = isOpened() ? "remove" : "add"
     wrapperContainer.classList[foo]("toggled")
+  }
+  const isDripped = () => {
+    return topRightButton.getAttribute("aria-expanded") === 'true'
   }
   toggleButton.addEventListener("click", () => {
     console.log("toggle button")
@@ -51,6 +57,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // PAGE MANIPULATION
   const navBar = document.querySelector("#nav-bar")
+  const navHomeButton = document.querySelector("#nav-home")
   const sidebarWrapper = document.querySelector("#sidebar-wrapper")
   const sideHomeButton = document.querySelector("#side-home")
   const sideAboutButton = document.querySelector("#side-about")
@@ -58,12 +65,43 @@ window.addEventListener("DOMContentLoaded", () => {
   const aboutPageContainer = document.querySelector("#about")
   let appearingContainerEle = boardPageContainer
 
+  // const homeButtonArr = [sideHomeButton, navHomeButton]
+  // homeButtonArr.forEach((buttonEle) => {
+  //   buttonEle.addEventListener("click", (e) => {
+  //     e.preventDefault()
+  //     appearingContainerEle.classList.add("none")
+  //     boardPageContainer.classList.remove("none")
+  //     appearingContainerEle = boardPageContainer
+  //     boardPageContainer.innerHTML = `
+  //     <h1 class="mt-4">My Static Projects</h1>
+  
+  //     <ul style="list-style-type: square">
+  //       <li>
+  //         <a id="fun-string-a" href="./projects/fun-string/fun-string.html"
+  //           >fun-string</a
+  //         >
+  //       </li>
+  //       <li>
+  //         <a
+  //           id="tws-vanilla-a"
+  //           href="./projects/tws-vanilla/tws-vanilla.html"
+  //           >tws-vanilla</a
+  //         >
+  //       </li>
+  //       <li>...</li>
+  //     </ul>
+  //     `
+  //     projectLinksAddEventLis()
+  //     isOpened() ? reverseToggle() : null
+  //     isDripped() ? topRightButton.click() : null
+  //   })
+  // })
   sideHomeButton.addEventListener("click", () => {
     appearingContainerEle.classList.add("none")
     boardPageContainer.classList.remove("none")
     appearingContainerEle = boardPageContainer
     boardPageContainer.innerHTML = `
-    <h1 class="mt-4">My Projects</h1>
+    <h1 class="mt-4">My Static Projects</h1>
 
     <ul style="list-style-type: square">
       <li>
@@ -97,7 +135,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const aEleArr = []
     aEleArr.push(document.querySelector("#fun-string-a"))
     aEleArr.push(document.querySelector("#tws-vanilla-a"))
-  
+
     aEleArr.forEach((aEle) => {
       aEle.addEventListener("click", (e) => {
         e.preventDefault()
