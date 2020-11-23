@@ -9,6 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("beforeinstallprompt", (e) => {
     // CAUTION! this eventListener will be fired some times
+    console.log('beforeinstallprompt')
     buttonInstall.style.display = "block"
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault()
