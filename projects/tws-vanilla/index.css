@@ -7,25 +7,28 @@ audio {
 }
 
 .container {
-  /* display: flex;
+  position: absolute;
+  width: 91%;
+  height: 100%;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
 }
 
 .inner-container {
     position: absolute;
+    width: fit-content;
+    height: fit-content;
     top: 45%;
-    right: 50%;
-  
-    transform: translate(-10%, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .big-text {
-  font-size: 5vw;
+  font-size: 8vw;
 }
 
 .normal-text {
-  font-size: 2vw;
+  font-size: 4vw;
 }
 
 body {

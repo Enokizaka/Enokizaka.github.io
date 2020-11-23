@@ -45,28 +45,41 @@ window.addEventListener("DOMContentLoaded", () => {
     reverseToggle()
   })
 
-  // // const containerFluid = document.querySelector(".container-fluid")
-  // pageContentWrapper.addEventListener("click", () => {
-  //   console.log('page content')
-  //   if (!isOpened()) return
-  //   reverseToggle()
-  // })
-
   // PAGE MANIPULATION
-  const sideBoardButton = document.querySelector("#side-home")
+  const navBar = document.querySelector("#nav-bar")
+  const sidebarWrapper = document.querySelector("#sidebar-wrapper")
+  const sideHomeButton = document.querySelector("#side-home")
   const sideAboutButton = document.querySelector("#side-about")
-  const boardPageContainer = document.querySelector("#board")
-  // const storedboardPageContainer = boardPageContainer.innerHTML
+  let boardPageContainer = document.querySelector("#board")
   const aboutPageContainer = document.querySelector("#about")
   let appearingContainerEle = boardPageContainer
 
-  // sideBoardButton.addEventListener("click", () => {
-  //   appearingContainerEle.classList.add("none")
-  //   boardPageContainer.classList.remove("none")
-  //   // boardPageContainer.innerHTML = storedboardPageContainer
-  //   appearingContainerEle = boardPageContainer
-  //   reverseToggle()
-  // })
+  sideHomeButton.addEventListener("click", () => {
+    appearingContainerEle.classList.add("none")
+    boardPageContainer.classList.remove("none")
+    appearingContainerEle = boardPageContainer
+    boardPageContainer.innerHTML = `
+    <h1 class="mt-4">My Projects</h1>
+
+    <ul style="list-style-type: square">
+      <li>
+        <a id="fun-string-a" href="./projects/fun-string/fun-string.html"
+          >fun-string</a
+        >
+      </li>
+      <li>
+        <a
+          id="tws-vanilla-a"
+          href="./projects/tws-vanilla/tws-vanilla.html"
+          >tws-vanilla</a
+        >
+      </li>
+      <li>...</li>
+    </ul>
+    `
+    projectLinksAddEventLis()
+    reverseToggle()
+  })
 
   sideAboutButton.addEventListener("click", () => {
     appearingContainerEle.classList.add("none")
@@ -76,25 +89,29 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   // Project links in board
-  const aEleArr = []
-  aEleArr.push(document.querySelector("#fun-string-a"))
-  aEleArr.push(document.querySelector("#tws-vanilla-a"))
-
-  aEleArr.forEach((aEle) => {
-    aEle.addEventListener("click", (e) => {
-      e.preventDefault()
-      const url = DIR + aEle.href
-      console.log(url)
-      createHTMLObjAndSet(url)
+  function projectLinksAddEventLis() {
+    const aEleArr = []
+    aEleArr.push(document.querySelector("#fun-string-a"))
+    aEleArr.push(document.querySelector("#tws-vanilla-a"))
+  
+    aEleArr.forEach((aEle) => {
+      aEle.addEventListener("click", (e) => {
+        e.preventDefault()
+        const url = DIR + aEle.href
+        console.log(url)
+        createHTMLObjAndSet(url)
+      })
     })
-  })
+  }
+  projectLinksAddEventLis()
 
   function createHTMLObjAndSet(url) {
     const obj = document.createElement("object")
     obj.type = "text/html"
     obj.data = url
-    obj.width = "800px"
-    obj.height = "800px"
+    obj.width = window.innerWidth
+    obj.width = pageContentWrapper.clientWidth
+    obj.height = window.innerHeight - 51
     boardPageContainer.innerHTML = obj.outerHTML
     return
   }
