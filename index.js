@@ -4,13 +4,16 @@ let buttonInstall
 window.addEventListener("DOMContentLoaded", () => {
   // SERVICE WORLER
   let deferredPrompt
-  buttonInstall = document.querySelector(".install-button")
-  buttonInstall.style.display = "none"
-
+  buttonInstall = document.querySelector("#install-button")
+  console.log(`DOMContentLoaded button none`)
+  // buttonInstall.style.display = "none"
+  buttonInstall.classList.add("none")
+  
   window.addEventListener("beforeinstallprompt", (e) => {
     // CAUTION! this eventListener will be fired some times
     console.log('beforeinstallprompt')
-    buttonInstall.style.display = "block"
+    // buttonInstall.style.display = "block"
+    buttonInstall.classList.remove("none")
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault()
     deferredPrompt = e
@@ -19,11 +22,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   buttonInstall.addEventListener("click", (e) => {
     // hideMyInstallPromotion()
+    e.preventDefault()
     deferredPrompt.prompt()
     deferredPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted the A2HS prompt")
-        buttonInstall.style.display = "none"
+        console.log(`buttonlick and accepted -> button none`)
+        // buttonInstall.style.display = "none"
+        buttonInstall.classList.add("none")
       } else {
       }
       deferredPrompt = null
@@ -121,7 +127,9 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("appinstalled", (e) => {
   // Log install to analytics
   console.log("INSTALL: Success")
-  buttonInstall.style.display = "none"
+  console.log(`INSTALL: Success -> button none`)
+  // buttonInstall.style.display = "none"
+  buttonInstall.classList.add("none")
 })
 
 function isInstalled() {
