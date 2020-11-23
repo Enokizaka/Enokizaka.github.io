@@ -1,4 +1,4 @@
-var CACHE_NAME = "enokiprojects-1.4.9"
+var CACHE_NAME = "enokiprojects-1.5.0"
 var urlsToCache = [
   "/",
   "/index.html",

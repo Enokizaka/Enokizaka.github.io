@@ -6,13 +6,11 @@ window.addEventListener("DOMContentLoaded", () => {
   let deferredPrompt
   buttonInstall = document.querySelector("#install-button")
   console.log(`DOMContentLoaded button none`)
-  // buttonInstall.style.display = "none"
   buttonInstall.classList.add("none")
   
   window.addEventListener("beforeinstallprompt", (e) => {
     // CAUTION! this eventListener will be fired some times
     console.log('beforeinstallprompt')
-    // buttonInstall.style.display = "block"
     buttonInstall.classList.remove("none")
     // Prevent the mini-infobar from appearing on mobile
     e.preventDefault()
@@ -28,7 +26,6 @@ window.addEventListener("DOMContentLoaded", () => {
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted the A2HS prompt")
         console.log(`buttonlick and accepted -> button none`)
-        // buttonInstall.style.display = "none"
         buttonInstall.classList.add("none")
       } else {
       }
@@ -128,7 +125,6 @@ window.addEventListener("appinstalled", (e) => {
   // Log install to analytics
   console.log("INSTALL: Success")
   console.log(`INSTALL: Success -> button none`)
-  // buttonInstall.style.display = "none"
   buttonInstall.classList.add("none")
 })
 
