@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun String Binary ver</title>
+    <style>
+      .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      p {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦄</text></svg>"
+    />
+  </head>
+  <body>
+    <h2>Binary version(You can use almost of all characters)</h2>
+    <form>
+      <label for="visible">Visible:</label><br />
+      <input
+        type="text"
+        id="visible"
+        name="visible"
+        placeholder="public string"
+      /><br />
+      <label for="invisible">Invisible:</label><br />
+      <input
+        type="text"
+        id="invisible"
+        name="invisible"
+        placeholder="private string"
+        maxlength="100"
+      /><br />
+      <input type="submit" value="Convert" class="convert-button" />
+    </form>
+    <br />
+    <input
+      type="text"
+      placeholder="converted Text"
+      readonly="readonly"
+      class="output"
+    />
+    <div class="tooltip">
+      <button class="copy-button">
+        <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+        Copy text
+      </button>
+    </div>
+    <br /><br /><br />
+    <input type="text" placeholder="text to be revealed" " class="reveal" />
+    <button class="reveal-button">Reveal</button>
+    <p class="revealed-container"></p>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const formEle = document.querySelector("form")
+      const copyButton = document.querySelector(".copy-button")
+      const copyText = document.querySelector(".output")
+      const tooltiptext = document.querySelector("#myTooltip")
+      const revealInput = document.querySelector(".reveal")
+      const revealButton = document.querySelector(".reveal-button")
+      const revealdContainer = document.querySelector(".revealed-container")
+
+      formEle.addEventListener("submit", (e) => {
+        e.preventDefault()
+        const visibleStr = document.querySelector("#visible").value
+        const invisibleStr = document.querySelector("#invisible").value
+        if (!visibleStr || !invisibleStr) return // USE My API ON HEROKU
+        ;(async () => {
+          const rawResponse = await fetch("https://fs-is.herokuapp.com/embed", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              invisibleStr: invisibleStr,
+              visibleStr: visibleStr,
+            }),
+          })
+          const content = await rawResponse.text()
+          console.log(content)
+          copyText.value = content
+        })()
+      })
+
+      function copy() {
+        copyText.select()
+        copyText.setSelectionRange(0, 99999) /*For mobile devices*/
+        document.execCommand("copy")
+        console.log(tooltiptext.innerHTML)
+        tooltiptext.innerHTML = `Copied`
+      }
+
+      copyButton.addEventListener("click", copy)
+
+      copyButton.addEventListener(
+        "mouseenter",
+        () => (tooltiptext.innerHTML = "Copy to clipboard")
+      )
+
+      revealButton.addEventListener("click", () => {
+        if (!revealInput.value) return // USE MY API ON HEROKU
+        ;(async () => {
+          const rawResponse = await fetch(
+            "https://fs-is.herokuapp.com/reveal",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ revealInput: revealInput.value }),
+            }
+          )
+          const content = await rawResponse.text()
+          let revealedStr = content
+          if (!revealedStr) revealedStr = "There is no hidden messages."
+          revealdContainer.innerHTML = revealedStr
+        })()
+      })
+    })
+  </script>
+</html>
