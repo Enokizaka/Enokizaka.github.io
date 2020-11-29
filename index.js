@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const topRightButton = document.querySelector("#top-right-button")
   const wrapperContainer = document.querySelector("#wrapper")
   const pageContentWrapper = document.querySelector("#page-content-wrapper")
-  if(window.innerWidth > 767) toggleButton
+  if (window.innerWidth > 767) toggleButton
   const isOpened = () => {
     return wrapperContainer.classList.value.includes("toggled")
     // return document.querySelector("#wrapper").classList.value.includes("toggled")
@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", () => {
     wrapperContainer.classList[foo]("toggled")
   }
   const isDripped = () => {
-    return topRightButton.getAttribute("aria-expanded") === 'true'
+    return topRightButton.getAttribute("aria-expanded") === "true"
   }
   toggleButton.addEventListener("click", () => {
     console.log("toggle button")
@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
   //     appearingContainerEle = boardPageContainer
   //     boardPageContainer.innerHTML = `
   //     <h1 class="mt-4">My Static Projects</h1>
-  
+
   //     <ul style="list-style-type: square">
   //       <li>
   //         <a id="fun-string-a" href="./projects/fun-string/fun-string.html"
@@ -110,6 +110,11 @@ window.addEventListener("DOMContentLoaded", () => {
         >
       </li>
       <li>
+              <a id="fun-string-b" href="./projects/fun-string-binary/fun-string-binary.html"
+                >fun-string-binary</a
+              >
+            </li>
+      <li>
         <a
           id="tws-vanilla-a"
           href="./projects/tws-vanilla/tws-vanilla.html"
@@ -134,6 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function projectLinksAddEventLis() {
     const aEleArr = []
     aEleArr.push(document.querySelector("#fun-string-a"))
+    aEleArr.push(document.querySelector("#fun-string-b"))
     aEleArr.push(document.querySelector("#tws-vanilla-a"))
 
     aEleArr.forEach((aEle) => {
